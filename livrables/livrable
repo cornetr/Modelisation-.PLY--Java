@@ -1,0 +1,12 @@
+#!/bin/bash
+if [[ $# -eq 1 ]]
+then
+	if [[ -d livrable_$1 ]]
+	then
+		java --module-path livrable_${1}/dependency-jars --add-modules javafx.controls,javafx.fxml,javafx.swing -jar livrable_${1}/projetmode2-livrable${1}.jar
+	else
+		echo -e "\n\tNuméro de livrable incorrect...\n"
+	fi
+else
+	echo -e "\n\tNombre d'arguments incorrect, il faut préciser le numéro du livrable en argument.\n"
+fi

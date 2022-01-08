@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<ruleset name="prod-appli"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>Règles à respecter dans le projet modélisation</description>
+
+    <rule ref="category/java/design.xml/NcssCount">
+        <properties>
+            <property name="methodReportLevel" value="50" />
+            <property name="classReportLevel" value="200" />
+            <property name="ncssOptions" value="" />
+        </properties>
+    </rule>
+
+    <!-- Naming Conventions -->
+    <rule ref="category/java/codestyle.xml/ClassNamingConventions"/>
+    <rule ref="category/java/codestyle.xml/FieldNamingConventions"/>
+    <rule ref="category/java/codestyle.xml/MethodNamingConventions"/>
+
+    <!-- Delete SystemPrintln-->
+    <rule ref="category/java/bestpractices.xml/SystemPrintln" />
+
+    <!-- GodClass -->
+    <rule ref="category/java/design.xml/GodClass" />
+
+	<!-- AbstractClassWithoutAbstractMethod -->
+	<rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod" />
+
+	<!-- ArrayIsStoredDirectly -->
+	<rule ref="category/java/bestpractices.xml/ArrayIsStoredDirectly" />
+
+	<!-- ForLoopCanBeForeach -->
+	<rule ref="category/java/bestpractices.xml/ForLoopCanBeForeach" />
+
+	<!-- SimplifyBooleanReturns -->
+	<rule ref="category/java/design.xml/SimplifyBooleanReturns" />
+
+	<!-- UnusedImports -->
+	<rule ref="category/java/bestpractices.xml/UnusedLocalVariable" />
+
+    <!-- UseUtilyClass -->
+    <rule ref="category/java/design.xml/UseUtilityClass"/>
+
+	<!-- ShortMethodName -->
+	<rule ref="category/java/codestyle.xml/ShortMethodName" />
+
+	<!-- ShortVariable -->
+	<rule ref="category/java/codestyle.xml/ShortVariable" />
+
+	<!-- CommentRequired -->
+	<rule ref="category/java/documentation.xml/CommentRequired">
+    <properties>
+        <property name="methodWithOverrideCommentRequirement" value="Ignored" />
+        <property name="accessorCommentRequirement" value="Ignored" />
+        <property name="classCommentRequirement" value="Required" />
+        <property name="fieldCommentRequirement" value="Ignored" />
+        <property name="publicMethodCommentRequirement" value="Required" />
+        <property name="protectedMethodCommentRequirement" value="Required" />
+        <property name="enumCommentRequirement" value="Required" />
+        <property name="serialVersionUIDCommentRequired" value="Ignored" />
+        <property name="serialPersistentFieldsCommentRequired" value="Ignored" />
+    </properties>
+</rule>
+
+	<!-- DefaultPackage -->
+	<rule ref="category/java/codestyle.xml/DefaultPackage" />
+
+	<!-- OnlyOneReturn -->
+	<rule ref="category/java/codestyle.xml/OnlyOneReturn" />
+
+	<!-- CallSuperInConstructor -->
+	<rule ref="category/java/codestyle.xml/CallSuperInConstructor" />
+
+	<!-- DoNotTerminateVM -->
+	<rule ref="category/java/errorprone.xml/DoNotTerminateVM" />
+
+	<!-- ConsecutiveAppendsShouldReuse -->
+	<rule ref="category/java/performance.xml/ConsecutiveLiteralAppends" />
+
+	<!-- LawOfDemeter -->
+	<rule ref="category/java/design.xml/LawOfDemeter" />
+
+    <!-- UseDiamondOperator -->
+    <rule ref="category/java/codestyle.xml/UseDiamondOperator"/>
+
+    <!-- SimplifiableTestAssertion -->
+    <rule ref="category/java/bestpractices.xml/SimplifiableTestAssertion" />
+    
+    <!-- La branche if d’une alternative ne peut pas être vide -->
+    <rule ref="category/java/errorprone.xml/EmptyIfStmt"/>
+
+    <!-- Un attribut ne peut pas avoir le même nom qu’une méthode de la classe -->
+    <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName" />
+
+    <!-- Si le corps d’une méthode est vide, alors il doit contenir un commentaire qui indique que le corps est vide intentiellement, et donc qu’il ne s’agit pas d’un oubli d’implémenter la méthode -->
+    <rule ref="category/java/documentation.xml/UncommentedEmptyMethodBody" />
+
+    <!-- Les case d’un switch ont une instruction break -->
+    <rule ref="category/java/errorprone.xml/MissingBreakInSwitch" />
+
+    <!-- PrematureDeclaration -->
+    <rule ref="category/java/codestyle.xml/PrematureDeclaration" />
+
+    <!-- UnusedAssignement -->
+    <rule ref="category/java/bestpractices.xml/UnusedAssignment">
+        <properties>
+            <property name="checkUnusedPrefixIncrement" value="true"/>
+            <property name="reportUnusedVariables" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- AvoidLiteralsInIfCondition-->
+    <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+    <properties>
+            <property name="ignoreMagicNumbers" value="0"/>
+            <property name="ignoreExpressions" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- La variable d’une boucle for ou foreach n’est pas réassignée dans la boucle. -->
+    <rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
+        <properties>
+            <property name="foreachReassign" value="deny"/>
+            <property name="forReassign" value="deny"/>
+        </properties>
+    </rule>
+
+    <!-- Il n’y a jamais plus de trois if imbriqués -->
+    <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">
+        <properties>
+            <property name="problemDepth" value="3" />
+        </properties>
+    </rule>
+
+    <!-- CognitiveComplexity -->
+    <rule ref="category/java/design.xml/CognitiveComplexity">
+        <properties>
+            <property name="reportLevel" value="15" />
+        </properties>
+    </rule>
+
+    <!-- ExcessiveMethodLength -->
+    <rule ref="category/java/design.xml/ExcessiveMethodLength">
+        <properties>
+            <property name="minimum" value="100.0" />
+        </properties>
+    </rule>
+
+    <!-- ExcessiveParameterList -->
+    <rule ref="category/java/design.xml/ExcessiveParameterList">
+        <properties>
+            <property name="minimum" value="10.0" />
+        </properties>
+    </rule>
+
+    <!-- UselessOverridingMethod -->
+    <rule ref="category/java/design.xml/UselessOverridingMethod">
+        <properties>
+            <property name="ignoreAnnotations" value="false" />
+        </properties>
+    </rule>
+</ruleset>

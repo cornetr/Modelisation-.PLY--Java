@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <AnchorPane prefHeight="750.0" prefWidth="1105.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="1109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <MenuItem fx:id="MenuFileOpen" mnemonicParsing="false" onAction="#openFile" text="Open File">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="MenuFileEdit" mnemonicParsing="false" onAction="#editFile" text="Edit File">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="MenuFileClose" mnemonicParsing="false" onAction="#closeFile" text="Close File">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="MenuFileDownload" mnemonicParsing="false" onAction="#download" text="Download PNG">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="MenuFileExit" mnemonicParsing="false" onAction="#exit" text="Exit">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Translation">
+                     <items>
+                        <MenuItem fx:id="mvTransUp" mnemonicParsing="false" onAction="#translateUp" text="Show Up">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="UP" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mvTransRight" mnemonicParsing="false" onAction="#translateRight" text="Show Right">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="RIGHT" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mvTransDown" mnemonicParsing="false" onAction="#translateDown" text="Show Down">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="DOWN" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mvTransLeft" mnemonicParsing="false" onAction="#translateLeft" text="Show Left">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="LEFT" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mvTransPull" mnemonicParsing="false" onAction="#translatePull" text="Show Pull">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="PAGE_UP" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mvTransPush" mnemonicParsing="false" onAction="#translatePush" text="Show Push">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="PAGE_DOWN" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="mvTransReset" mnemonicParsing="false" onAction="#resetTranslation" text="Reset">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="R" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Rotation">
+                     <items>
+                        <MenuItem fx:id="mvRotPlusX" mnemonicParsing="false" onAction="#rotationPlusX" text="X +">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="UP" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mvRotMinusX" mnemonicParsing="false" onAction="#rotationMinusX" text="X -">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="DOWN" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mvRotPlusY" mnemonicParsing="false" onAction="#rotationPlusY" text="Y +">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="RIGHT" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mvRotMinusY" mnemonicParsing="false" onAction="#rotationMinusY" text="Y -">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="LEFT" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mvRotPlusZ" mnemonicParsing="false" onAction="#rotationPlusZ" text="Z +">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="PAGE_UP" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <MenuItem fx:id="mvRotMinusZ" mnemonicParsing="false" onAction="#rotationMinusZ" text="Z -">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="PAGE_DOWN" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="mvRotReset" mnemonicParsing="false" onAction="#resetRotation" text="Reset">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Zoom">
+                     <items>
+                        <MenuItem fx:id="mvZoom50" mnemonicParsing="false" onAction="#menuZoom50" text="50%" />
+                        <MenuItem fx:id="mvZoom100" mnemonicParsing="false" onAction="#menuZoom100" text="100%" />
+                        <MenuItem fx:id="mvZoom250" mnemonicParsing="false" onAction="#menuZoom250" text="250%" />
+                        <MenuItem fx:id="mvZoom500" mnemonicParsing="false" onAction="#menuZoom500" text="500%" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem fx:id="MenuHelpAbout" mnemonicParsing="false" onAction="#help" text="About PLY Viewer">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+               <children>
+                  <AnchorPane fx:id="anchorPaneCanvas" style="-fx-background-color: lightgrey;" VBox.vgrow="ALWAYS">
+                     <children>
+                        <GridPane gridLinesVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" percentWidth="66.6667" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <Canvas fx:id="render" height="500.0" layoutY="9.0" width="740.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <GridPane gridLinesVisible="true" GridPane.columnIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <AnchorPane prefHeight="200.0">
+                                       <children>
+                                          <Canvas fx:id="renderup" height="250.0" width="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane GridPane.rowIndex="1">
+                                       <children>
+                                          <Canvas fx:id="renderdown" height="250.0" width="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                        <HBox alignment="BASELINE_LEFT" prefHeight="50.0" AnchorPane.bottomAnchor="0.0">
+                           <children>
+                              <ToggleButton fx:id="buttonOpenMouvement" mnemonicParsing="false" onAction="#openMouvement" prefHeight="50.0" prefWidth="120.0" selected="true" style="-fx-border-color: grey;" text="Movement">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="CategorySelection" />
+                                 </toggleGroup>
+                              </ToggleButton>
+                              <ToggleButton fx:id="buttonOpenOption" mnemonicParsing="false" onAction="#openOption" prefHeight="50.0" prefWidth="120.0" style="-fx-border-color: grey;" text="Option" toggleGroup="$CategorySelection" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane focusTraversable="true">
+                     <children>
+                        <StackPane fx:id="stackpaneButton" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox fx:id="hBoxMouvement" alignment="CENTER" prefHeight="230.0" style="-fx-background-color: gainsboro; -fx-border-image-width: 0px; -fx-border-color: grey;" StackPane.alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="350.0">
+                                       <children>
+                                          <Label text="Zoom">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Slider fx:id="sliderZoom" blockIncrement="1.0" majorTickUnit="1.0" max="5.0" maxWidth="280.0" min="1.0E-4" minorTickCount="1" onKeyReleased="#drawFigure" onMouseDragged="#drawFigure" onMouseReleased="#drawFigure" prefHeight="50.0" prefWidth="250.0" showTickLabels="true" showTickMarks="true" value="1.0" />
+                                          <Button fx:id="buttonResetZoom" mnemonicParsing="false" onAction="#resetZoom" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;">
+                                             <graphic>
+                                                <ImageView fitHeight="54.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/square_icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="169.0" prefWidth="300.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="89.0" text="Translation">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <GridPane alignment="CENTER" prefHeight="149.0" prefWidth="324.0">
+                                             <children>
+                                                <Button fx:id="buttonResetTranslation" mnemonicParsing="false" onAction="#resetTranslation" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <graphic>
+                                                      <ImageView fitHeight="54.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../icons/square_icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="buttonTranslateUp" mnemonicParsing="false" onAction="#translateUp" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                                                   <graphic>
+                                                      <ImageView fitHeight="54.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../icons/up_icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="5.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="buttonTranslateRight" mnemonicParsing="false" onAction="#translateRight" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                                                   <graphic>
+                                                      <ImageView fitHeight="54.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../icons/right_icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="buttonTranslateDown" mnemonicParsing="false" onAction="#translateDown" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                                   <graphic>
+                                                      <ImageView fitHeight="54.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../icons/down_icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <GridPane.margin>
+                                                      <Insets top="5.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="buttonTranslateLeft" mnemonicParsing="false" onAction="#translateLeft" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                   <graphic>
+                                                      <ImageView fitHeight="54.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../icons/left_icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="buttonTranslatePush" mnemonicParsing="false" onAction="#translatePush" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 10px; -fx-border-color: grey; -fx-border-radius: 10px;" text="PUSH" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets top="5.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="buttonTranslatePull" mnemonicParsing="false" onAction="#translatePull" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 10px; -fx-border-color: grey; -fx-border-radius: 10px;" text="PULL" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets top="5.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="169.0" prefWidth="300.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="89.0" text="Rotation">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <GridPane alignment="CENTER" prefHeight="149.0" prefWidth="324.0">
+                                             <children>
+                                                <Button fx:id="buttonResetRotation" mnemonicParsing="false" onAction="#resetRotation" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                   <graphic>
+                                                      <ImageView fitHeight="50.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../icons/square_icon.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                                <Button fx:id="buttonRotationPlusX" mnemonicParsing="false" onAction="#rotationPlusX" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" text="X +" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="5.0" />
+                                                   </GridPane.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="buttonRotationPlusY" mnemonicParsing="false" onAction="#rotationPlusY" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" text="Y +" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="buttonRotationMinusX" mnemonicParsing="false" onAction="#rotationMinusX" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" text="X -" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                                   <GridPane.margin>
+                                                      <Insets top="5.0" />
+                                                   </GridPane.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="buttonRotationMinusY" mnemonicParsing="false" onAction="#rotationMinusY" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;" text="Y -" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets />
+                                                   </GridPane.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="buttonRotationPlusZ" mnemonicParsing="false" onAction="#rotationPlusZ" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 10px; -fx-border-color: grey; -fx-border-radius: 10px;" text="Z +" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets top="5.0" />
+                                                   </GridPane.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="buttonRotationMinusZ" mnemonicParsing="false" onAction="#rotationMinusZ" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 10px; -fx-border-color: grey; -fx-border-radius: 10px;" text="Z -" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets top="5.0" />
+                                                   </GridPane.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="75.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="hBoxOption" alignment="CENTER" prefHeight="230.0" style="-fx-background-color: gainsboro; -fx-border-image-width: 0px; -fx-border-color: grey;" visible="false">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                       <children>
+                                          <CheckBox fx:id="checkBoxLuminosity" mnemonicParsing="false" onAction="#drawFigure" prefWidth="120.0" text="Luminosity">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="checkBoxAutoRot" mnemonicParsing="false" onAction="#autoRotation" prefWidth="120.0" text="Auto Rotation">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                                       <children>
+                                          <CheckBox fx:id="checkBoxDisplayWires" mnemonicParsing="false" onAction="#drawFigure" prefWidth="120.0" selected="true" text="Display Wires">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                          <CheckBox fx:id="checkBoxDisplayFaces" mnemonicParsing="false" onAction="#drawFigure" prefWidth="120.0" text="Display Faces">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </CheckBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+                                       <children>
+                                          <Label fx:id="labelFile">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="buttonOpenFile" alignment="CENTER" mnemonicParsing="false" onAction="#openFile" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 100px; -fx-border-color: grey; -fx-border-radius: 100px;" text="Open File">
+                                             <graphic>
+                                                <ImageView fitHeight="63.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/openfile_icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                          <Button fx:id="buttonDownload" alignment="CENTER" mnemonicParsing="false" onAction="#download" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 100px; -fx-border-color: grey; -fx-border-radius: 100px;" text="Download">
+                                             <graphic>
+                                                <ImageView fitHeight="63.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/download_icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="120.0">
+                                       <children>
+                                          <Label text="Face Color " />
+                                          <ColorPicker fx:id="colorPickerFace" onAction="#pickFace">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <value>
+                                                <Color red="0.6980392336845398" green="0.13333334028720856" blue="0.13333334028720856" />
+                                             </value>
+                                          </ColorPicker>
+                                          <Label text="Wire Color ">
+                                             <VBox.margin>
+                                                <Insets top="15.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <ColorPicker fx:id="colorPickerWire" onAction="#pickWire">
+                                             <value>
+                                                <Color />
+                                             </value>
+                                          </ColorPicker>
+                                          <Label text="Background Color">
+                                             <VBox.margin>
+                                                <Insets top="15.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <ColorPicker fx:id="colorPickerBackground" onAction="#pickBackground">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <value>
+                                                <Color red="0.8274509906768799" green="0.8274509906768799" blue="0.8274509906768799" />
+                                             </value>
+                                          </ColorPicker>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Reset" />
+                                          <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#resetAll" prefHeight="50.0" prefWidth="75.0" style="-fx-background-radius: 50px; -fx-border-color: grey; -fx-border-radius: 50px;">
+                                             <graphic>
+                                                <ImageView fitHeight="54.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../icons/square_icon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="7.0" prefHeight="750.0" prefWidth="293.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="tableViewFile" prefHeight="698.0" prefWidth="273.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="columnName" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="110.0" text="Name" />
+                        <TableColumn fx:id="columnVertex" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="81.86669921875" text="Vertex" />
+                        <TableColumn fx:id="columnFace" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="77.3333740234375" text="Face" />
+                     </columns>
+                  </TableView>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="buttonSubmit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#submit" prefHeight="35.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: grey;" text="Submit" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="buttonEdit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#editFile" prefHeight="35.0" prefWidth="65.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: grey;" text="Edit" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="buttonLibrary" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chooseLibrary" prefHeight="35.0" prefWidth="120.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: grey;" text="Choose Library" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
