@@ -84,7 +84,7 @@ java --module-path "**lien vers le SDK JavaFX**\lib" --add-modules=javafx.contro
 ## Distribution du travail (qui a fait quoi)
 
 - Alexis : MVC, éclairage, couleurs, modèle centré
-- Romann : PMD, Rotation auto, Bibliothèque de PLY
+- Romann : PMD, Thread Rotation auto, Bibliothèque de PLY, Édition de PLY
 - Bastien : Interface (FXML, gestion des boutons/slider... et des fonctions liées)
 - Clément : MVC, Javadoc/Commentaire, PMD, clean code
 
