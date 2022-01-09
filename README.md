@@ -10,6 +10,8 @@ java --module-path "**lien vers le SDK JavaFX**\lib" --add-modules=javafx.contro
 
 ![](captures/Livrable%202/screenshot_3.png)
 
+![](captures/Livrable%202/screenshot_4.png)
+
 # Membres de l'équipe
 
  - Alexis Bonal
