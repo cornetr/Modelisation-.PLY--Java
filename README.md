@@ -1,5 +1,9 @@
 # ( Librairie nécaissaire : JavaFX )
 
+```
+java --module-path "**lien vers le SDK JavaFX**\lib" --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar git\Modelisation3D.PLY\livrables\livrable_2\projetmode2-livrable2.jar
+```
+
 # Membres de l'équipe
 
  - Alexis Bonal
