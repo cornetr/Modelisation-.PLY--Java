@@ -6,7 +6,7 @@ java --module-path "**lien vers le SDK JavaFX**\lib" --add-modules=javafx.contro
 
 # Aperçu du projet 
 
-![](captures/Livrable 2/screenshot_1.png)
+![](captures/Livrable%202/screenshot_1.png)
 
 # Membres de l'équipe
 
