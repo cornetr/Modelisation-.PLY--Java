@@ -4,6 +4,10 @@
 java --module-path "**lien vers le SDK JavaFX**\lib" --add-modules=javafx.controls,javafx.swing,javafx.fxml -jar git\Modelisation3D.PLY\livrables\livrable_2\projetmode2-livrable2.jar
 ```
 
+# Aperçu du projet 
+
+![](captures/Livrable_2/screenshot_1.png)
+
 # Membres de l'équipe
 
  - Alexis Bonal
